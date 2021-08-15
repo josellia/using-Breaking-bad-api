@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+.container__title {
+  font-family: "Nunito", sans-serif;
+  color: #ffff00;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.container__author {
+  text-align: center;
+  color: #050f0f;
+  font-weight: bold;
+}

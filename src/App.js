@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { getBreaking } from "./api/api";
 
+import "./App.css";
+import Quote from "./components/Quote";
+
+const initialValue = {
+  text: "",
+  author: "",
+};
 function App() {
+  const [quote, setQuote] = useState(initialValue);
+
+  const quoteRandom = () => {
+    getBreaking().then((data) => {
+      const [newData] = data;
+      const { quote, author } = newData;
+
+      setQuote({
+        text: quote,
+        author: author,
+      });
+    });
+  };
+
+  useEffect(() => {
+    quoteRandom();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <button className="btn" onClick={quoteRandomin}>
+        Gerar frases randômicas
+      </button>
+      <Quote quote={quote} />
     </div>
   );
 }
